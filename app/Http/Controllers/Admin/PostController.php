@@ -103,8 +103,10 @@ class PostController extends Controller
     {
         $post = Post::find($id);
 
+        $categories = Category::all();
+
         if ($post) {
-            return view('admin.posts.edit', compact('post'));
+            return view('admin.posts.edit', compact('post', 'categories'));
         }
 
         abort(404, 'Il post è stato modificato, cancellato o la pagina non esiste più');
