@@ -36,7 +36,19 @@
               {{-- e dall'oggetto gli chiedo di visualizzare solo il nome (name) --}}
               {{-- posso anche scegliere di visualizzare l'id, lo slug, ecc. --}}
               {{-- questo grazie alla relazione (one to many) tra Post e Category --}}
-              <td>{{ $post->category->name }}</td>
+              {{-- <td>{{ $post->category->name }}</td> --}}
+
+              {{-- MA devo controllare l'esistenza della relazione altrimenti genera errore --}}
+              <td>
+                {{-- SE esiste la relazione... --}}
+                @if ($post->category)
+                  {{-- ...stampa il nome della categoria --}}
+                  {{ $post->category->name }}
+                @else
+                  {{-- ALTRIMENTI fai un trattino --}}
+                  - 
+                @endif
+              </td>
               <td class="d-flex justify-content-between">
                 <a class="btn btn-success" href="{{ route('admin.posts.show', $post)}}">SHOW</a>
                 <a class="btn btn-info" href="{{ route('admin.posts.edit', $post)}}">EDIT</a>
