@@ -10,7 +10,9 @@ class Post extends Model
     protected $fillable = [
         'title',
         'content',
-        'slug'
+        'slug',
+        // aggiungiamo il category_id nel fillable così nello store del Controller arrivano TUTTI i dati 
+        'category_id'
     ];
 
     // creo una funzione pubblica per sapere a che categoria appartiene il post

@@ -15,7 +15,7 @@
 
     <div class="row mb-5">
       <a class="btn btn-info mr-3" href="{{ route('admin.posts.edit', $post)}}">EDIT</a>
-      <form action="{{ route('admin.posts.destroy', $post)}}" method="POST">
+      <form onsubmit="return confirm('Sicuro di voler eliminare questo post?')" action="{{ route('admin.posts.destroy', $post)}}" method="POST">
         @csrf
         @method('DELETE')
         <button class="btn btn-danger" type="submit">DELETE</button>
