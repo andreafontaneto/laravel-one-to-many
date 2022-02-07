@@ -4,6 +4,12 @@
 <div class="container">
     <div>
       <h1>{{ $post->title }}</h1>
+
+      {{-- SE la categoria esiste stampo un badge --}}
+      @if ($post->category)
+        <h5><span class="badge bg-secondary">{{ $post->category->name }}</span></h5> 
+      @endif
+      
       <p>{{ $post->content }}</p>
     </div>
 
