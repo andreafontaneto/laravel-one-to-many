@@ -21,15 +21,22 @@
           <tr>
             <th scope="col">ID</th>
             <th scope="col">TITOLO</th>
+            <th scope="col">CATEGORIA</th>
             <th scope="col" colspan="3">AZIONI</th>
           </tr>
         </thead>
         <tbody>
           
           @foreach ($posts as $post)
+          {{-- @dump($post->category->name) --}}
             <tr>
               <th scope="row">{{ $post->id }}</th>
               <td>{{ $post->title }}</td>
+              {{-- stampo la categoria prendendo TUTTO l'oggetto ($post->category) --}}
+              {{-- e dall'oggetto gli chiedo di visualizzare solo il nome (name) --}}
+              {{-- posso anche scegliere di visualizzare l'id, lo slug, ecc. --}}
+              {{-- questo grazie alla relazione (one to many) tra Post e Category --}}
+              <td>{{ $post->category->name }}</td>
               <td class="d-flex justify-content-between">
                 <a class="btn btn-success" href="{{ route('admin.posts.show', $post)}}">SHOW</a>
                 <a class="btn btn-info" href="{{ route('admin.posts.edit', $post)}}">EDIT</a>
