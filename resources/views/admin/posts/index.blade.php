@@ -71,21 +71,24 @@
   </div>
 
   <div class="mt-3">
-    <h2>NOME CATEGORIA</h2>
-    <ul>
-      <li>
-        <a href="#">post di questa categoria</a>
-      </li>
-      <li>
-        <a href="#">post di questa categoria</a>
-      </li>
-      <li>
-        <a href="#">post di questa categoria</a>
-      </li>
-      <li>
-        <a href="#">post di questa categoria</a>
-      </li>
-    </ul>
+    {{-- PER ogni categoria essitente... --}}
+    @foreach ($categories as $category)
+      {{-- stampo il nome (name) della categoria --}}
+      <h2>{{$category->name}}</h2>
+      <ul>
+        {{-- PER ogni post DI QUELLA CATEGORIA... --}}
+        @forelse ($category->posts as $post_category)
+          {{-- prendo tutto l'oggetto ($post_category) e stampo il titolo (title) --}}
+          <li>
+            {{-- lo indirizzo alla route SHOW per mostrare la pagina di QUEL POST in particolare --}}
+            <a href="{{ route('admin.posts.show', $post_category) }}">{{ $post_category->title }}</a>
+          </li>
+        @empty
+          {{-- SE non trova la corrispondenza scrive un altro testo --}}
+          <li>Nessun post presente</li>
+        @endforelse
+      </ul>
+    @endforeach
   </div>
 
 </div>

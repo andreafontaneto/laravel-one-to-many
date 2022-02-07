@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Post;
+use App\Category;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -15,8 +16,16 @@ class PostController extends Controller
      */
     public function index()
     {
+        // recupero tutti i post
+        // li riordino per id in ordine decrescente
+        // li impagino di 5 per pagina
         $posts =  Post::orderBy('id', 'desc')->paginate(5);
-        return view('admin.posts.index', compact('posts'));
+
+        // recupero tutte le categorie esistenti
+        $categories = Category::all();
+
+        // faccio un return della vista corretta e passo come parametri i post E le categorie
+        return view('admin.posts.index', compact('posts', 'categories'));
     }
 
     /**
