@@ -13,6 +13,14 @@ class Post extends Model
         'slug'
     ];
 
+    // creo una funzione pubblica per sapere a che categoria appartiene il post
+    // belongsTo() significa "appartengo a..." e mette in relazione (one to many) il model Post (many) con Category (one)
+    public function category(){
+
+        return $this->belongsTo('App\Category');
+
+    }
+
     // creo una funzione statica (::) per poterla richiamare DOPO nel seeder usando QUESTO Model (Post)
     public static function generateSlug($title){
 
