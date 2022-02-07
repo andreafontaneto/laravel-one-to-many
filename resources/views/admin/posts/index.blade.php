@@ -69,5 +69,24 @@
     </div>
 
   </div>
+
+  <div class="mt-3">
+    <h2>NOME CATEGORIA</h2>
+    <ul>
+      <li>
+        <a href="#">post di questa categoria</a>
+      </li>
+      <li>
+        <a href="#">post di questa categoria</a>
+      </li>
+      <li>
+        <a href="#">post di questa categoria</a>
+      </li>
+      <li>
+        <a href="#">post di questa categoria</a>
+      </li>
+    </ul>
+  </div>
+
 </div>
 @endsection
